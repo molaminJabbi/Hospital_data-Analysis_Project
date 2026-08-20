@@ -132,43 +132,6 @@ Hospital_data-Analysis_Project/
 | **Jupyter Notebook** | Interactive analysis and documentation |
 | **NumPy** | Numerical computations (implicit via Pandas) |
 
----
-
-## 📊 Dataset Specifications
-
-### Columns & Data Types
-
-**Patient Information:**
-- `id` - Patient identifier (int64)
-- `birth_place` - Patient origin location (object) - primarily Guizhou Province, China
-- `department` - Hospital department (object)
-
-**Clinical Data:**
-- `discharge_diagnosis` - Primary diagnosis at discharge (object)
-- `other_diagnoses_for_discharge` - Secondary/comorbid diagnoses (object)
-- `outpatient_physician` - Attending physician (object)
-- `outpatient_physician_department` - Physician's department (object)
-
-**Temporal Data:**
-- `admission_time` - Patient admission timestamp (datetime64[ns])
-- `discharge_time` - Patient discharge timestamp (datetime64[ns])
-- `days` - Length of stay in days (float64) - *4 missing values*
-
-**Financial Data (10 categories, all in Chinese Yuan - ¥):**
-- `fees` - Total patient fees (float64)
-- `lab_fees` - Laboratory services (float64)
-- `inspection_fees` - Diagnostic inspection (float64)
-- `western_medicine_fees` - Western medication costs (float64)
-- `nursing_fee` - Nursing care costs (int64)
-- `grass_fee` - Traditional/herbal medicine (float64)
-- `anesthesia_fee` - Anesthesia services (float64)
-- `other_fees` - Miscellaneous charges (float64)
-- `surgery_fees` - Surgical procedures (int64)
-- `bed_fee` - Hospital bed charges (float64)
-- `medical_fees` - General medical services (float64)
-
----
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -365,18 +328,11 @@ jupyter notebook
 
 ---
 
-## 📜 License
-
-This project is open source and available under the **MIT License**.  
-See LICENSE file for details.
-
----
-
 ## 🙏 Acknowledgments
 
 - Dataset sourced from hospital records (April 2015 - February 2016)
 - Guizhou Province, China healthcare facility
-- Analysis performed using Python's pandas ecosystem
+- Analysis performed using Python
 - Visualization created with Matplotlib
 
 ---
