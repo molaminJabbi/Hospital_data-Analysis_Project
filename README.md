@@ -8,10 +8,12 @@
 
 ## 📋 Overview
 
-A comprehensive data analysis project examining hospital patient records, focusing on healthcare costs, patient demographics, and operational efficiency across multiple departments. This project demonstrates proficiency in data cleaning, exploratory data analysis (EDA), and extracting actionable insights from complex healthcare datasets.
+A comprehensive data analysis project examining hospital patient records from a Chinese healthcare facility, focusing on healthcare costs, patient demographics, and operational efficiency across multiple departments. This project demonstrates proficiency in data cleaning, exploratory data analysis (EDA), and extracting actionable insights from complex healthcare datasets.
 
-**Dataset**: 527 patient records across multiple hospital departments  
+**Dataset**: 527 patient records from a Chinese hospital across multiple departments  
+**Location**: Guizhou Province, China (Anshun region)  
 **Time Period**: April 2015 - February 2016  
+**Currency**: Chinese Yuan (CNY/¥)  
 **Primary Focus**: Cost analysis, length of stay patterns, departmental performance, and billing component breakdown
 
 ---
@@ -23,22 +25,22 @@ A comprehensive data analysis project examining hospital patient records, focusi
 | **Total Patient Records** | 527 |
 | **Average Length of Stay** | 13.7 days |
 | **Median Length of Stay** | 10 days |
-| **Average Total Fees per Patient** | ₹3,203.99 |
-| **Cost Range** | ₹396.18 - ₹23,503.40 |
+| **Average Total Fees per Patient** | ¥3,203.99 |
+| **Cost Range** | ¥396.18 - ¥23,503.40 |
 | **Data Completeness** | 99.24% |
 | **Primary Cost Driver** | Western Medicine (34.9%) |
 
 ### 💰 Cost Breakdown (Average per Patient)
-- **Western Medicine Fees**: ₹1,117.08 (34.9%)
-- **Lab Fees**: ₹518.26 (16.2%)
-- **Medical Fees**: ₹511.58 (16.0%)
-- **Inspection Fees**: ₹268.30 (8.4%)
-- **Other Fees**: ₹229.63 (7.2%)
-- **Anesthesia Fee**: ₹83.11 (2.6%)
-- **Nursing Fee**: ₹66.25 (2.1%)
-- **Bed Fee**: ₹94.05 (2.9%)
-- **Grass Fee**: ₹5.83 (0.2%)
-- **Surgery Fees**: ₹189.23 (5.9%)
+- **Western Medicine Fees**: ¥1,117.08 (34.9%)
+- **Lab Fees**: ¥518.26 (16.2%)
+- **Medical Fees**: ¥511.58 (16.0%)
+- **Inspection Fees**: ¥268.30 (8.4%)
+- **Other Fees**: ¥229.63 (7.2%)
+- **Surgery Fees**: ¥189.23 (5.9%)
+- **Bed Fee**: ¥94.05 (2.9%)
+- **Anesthesia Fee**: ¥83.11 (2.6%)
+- **Nursing Fee**: ¥66.25 (2.1%)
+- **Grass Fee (Traditional Medicine)**: ¥5.83 (0.2%)
 
 ### 🏥 Department Coverage
 - Department of Obstetrics and Gynecology (multiple locations)
@@ -138,7 +140,7 @@ Hospital_data-Analysis_Project/
 
 **Patient Information:**
 - `id` - Patient identifier (int64)
-- `birth_place` - Patient origin location (object)
+- `birth_place` - Patient origin location (object) - primarily Guizhou Province, China
 - `department` - Hospital department (object)
 
 **Clinical Data:**
@@ -152,7 +154,7 @@ Hospital_data-Analysis_Project/
 - `discharge_time` - Patient discharge timestamp (datetime64[ns])
 - `days` - Length of stay in days (float64) - *4 missing values*
 
-**Financial Data (10 categories):**
+**Financial Data (10 categories, all in Chinese Yuan - ¥):**
 - `fees` - Total patient fees (float64)
 - `lab_fees` - Laboratory services (float64)
 - `inspection_fees` - Diagnostic inspection (float64)
@@ -213,20 +215,23 @@ jupyter notebook
 ## 📈 Key Insights & Observations
 
 ### 💡 Clinical Insights
-- **Obstetrics & Gynecology** departments handle significant proportion of admissions
+- **Obstetrics & Gynecology** departments handle significant proportion of admissions (typical for Chinese hospitals with reproductive health focus)
 - **Length of Stay**: Average 13.7 days suggests mix of routine and complex cases
 - **Emergency Department**: Lower LOS with varying cost profiles
+- **Traditional Medicine**: Grass fee component (¥5.83 avg) reflects integration of traditional Chinese medicine in healthcare
 
 ### 💰 Financial Insights
 - **Cost Concentration**: Western medicine (35%) and lab fees (16%) account for 51% of total costs
-- **Cost Variation**: High standard deviation (₹2,423.88) indicates diverse case complexity
-- **Outlier Cases**: Maximum fees (₹23,503.40) suggest high-complexity surgical cases
-- **Surgery Fees Impact**: Highly variable (₹0-₹3,470) depending on procedure type
+- **Cost Variation**: High standard deviation (¥2,423.88) indicates diverse case complexity
+- **Outlier Cases**: Maximum fees (¥23,503.40) suggest high-complexity surgical cases
+- **Surgery Fees Impact**: Highly variable (¥0-¥3,470) depending on procedure type
+- **Affordable Healthcare**: Average fees of ¥3,203.99 reflect China's healthcare pricing structure
 
 ### 📊 Data Quality Observations
 - **Minimal Missing Data**: Only 4 records missing length of stay (highly reliable dataset)
 - **Complete Financial Records**: All fee categories recorded for every patient
 - **Consistent DateTime Formats**: Proper temporal data for admission/discharge tracking
+- **Geographic Consistency**: All patients from Guizhou Province region confirms single facility analysis
 
 ---
 
@@ -258,25 +263,25 @@ jupyter notebook
 |------------|-------------|------|-------|
 | id | Unique patient identifier | int64 | 1-527 |
 | department | Hospital department name | object | Multiple departments |
-| birth_place | Patient's birthplace/origin | object | Primarily Guizhou region |
+| birth_place | Patient's birthplace/origin | object | Primarily Guizhou region, China |
 | discharge_diagnosis | Primary diagnosis at discharge | object | Medical diagnosis codes/descriptions |
 | other_diagnoses_for_discharge | Secondary diagnoses | object | Comorbidities and related conditions |
 | admission_time | Hospital admission date/time | datetime64 | April 2015 - Feb 2016 |
 | discharge_time | Hospital discharge date/time | datetime64 | April 2015 - Feb 2016 |
 | days | Length of hospital stay | float64 | 0-317 days; 4 missing values |
-| fees | Total patient charges | float64 | ₹396.18 - ₹23,503.40 |
+| fees | Total patient charges | float64 | ¥396.18 - ¥23,503.40 |
 | outpatient_physician | Attending/referring physician | object | Physician name (partially masked) |
 | outpatient_physician_department | Physician's primary department | object | Department assignment |
-| lab_fees | Laboratory test charges | float64 | ₹23.50 - ₹2,239.50 |
-| inspection_fees | Diagnostic/imaging fees | float64 | ₹0 - ₹2,012.00 |
-| western_medicine_fees | Medication/pharmaceutical costs | float64 | ₹0 - ₹7,258.85 |
-| nursing_fee | Nursing care charges | int64 | ₹0 - ₹969 |
-| grass_fee | Traditional/herbal medicine | float64 | ₹0 - ₹396.00 |
-| anesthesia_fee | Anesthesia service charges | float64 | ₹0 - ₹909.00 |
-| other_fees | Miscellaneous charges | float64 | ₹5.50 - ₹15,560.52 |
-| surgery_fees | Surgical procedure charges | int64 | ₹0 - ₹3,470 |
-| bed_fee | Hospital bed/accommodation charges | float64 | ₹0 - ₹527.40 |
-| medical_fees | General medical service charges | float64 | ₹0 - ₹9,415.00 |
+| lab_fees | Laboratory test charges | float64 | ¥23.50 - ¥2,239.50 |
+| inspection_fees | Diagnostic/imaging fees | float64 | ¥0 - ¥2,012.00 |
+| western_medicine_fees | Medication/pharmaceutical costs | float64 | ¥0 - ¥7,258.85 |
+| nursing_fee | Nursing care charges | int64 | ¥0 - ¥969 |
+| grass_fee | Traditional/herbal medicine | float64 | ¥0 - ¥396.00 |
+| anesthesia_fee | Anesthesia service charges | float64 | ¥0 - ¥909.00 |
+| other_fees | Miscellaneous charges | float64 | ¥5.50 - ¥15,560.52 |
+| surgery_fees | Surgical procedure charges | int64 | ¥0 - ¥3,470 |
+| bed_fee | Hospital bed/accommodation charges | float64 | ¥0 - ¥527.40 |
+| medical_fees | General medical service charges | float64 | ¥0 - ¥9,415.00 |
 
 ---
 
@@ -304,28 +309,32 @@ jupyter notebook
 - 💡 **Cost Optimization Strategy**: Actionable recommendations for finance
 - 📊 **Revenue Cycle Analysis**: Identify billing optimization opportunities
 - 🎓 **Physician Performance**: Analyze cost efficiency by physician
-- 🏆 **Benchmarking Study**: Compare against industry standards
+- 🏆 **Benchmarking Study**: Compare against Chinese healthcare standards
 
 ---
 
 ## 📝 Methodology & Assumptions
 
 ### Data Assumptions
-- All cost data is in the same currency (Indian Rupees)
+- All cost data is in Chinese Yuan (CNY/¥)
+- Dataset represents a single hospital facility in Guizhou Province, China
 - Datetime fields represent actual admission/discharge times
 - Diagnosis descriptions are standardized within the system
 - All 527 records represent valid, completed patient episodes
+- "Grass fee" refers to traditional Chinese medicine/herbal treatments
 
 ### Analysis Limitations
 - **Temporal Scope**: Single year (2015-2016) - seasonal patterns require multi-year data
 - **Outcome Data**: Analysis lacks patient outcome metrics (readmission, complications)
 - **External Context**: No socioeconomic or insurance status data available
-- **Geographic Scope**: Limited to one hospital facility
+- **Geographic Scope**: Limited to one hospital facility in Guizhou Province
+- **No Inflation Adjustment**: Cost data not adjusted for inflation across the study period
 
 ### Data Quality Notes
 - 4 missing values in `days` column (0.76%) - calculated from admission/discharge times where available
 - Physician names partially masked (privacy protection)
 - All other fields are 100% complete
+- Data sourced from hospital management system, ensuring clinical accuracy
 
 ---
 
@@ -333,12 +342,13 @@ jupyter notebook
 
 | User Role | Key Questions Answered |
 |-----------|----------------------|
-| **CFO/Finance Director** | What are our biggest cost drivers? Where can we optimize? |
+| **Hospital CFO/Finance Director** | What are our biggest cost drivers? Where can we optimize? |
 | **Hospital Administrator** | How do departments compare? Where are inefficiencies? |
 | **Department Head** | What's our average cost per patient? How do we benchmark? |
 | **Quality Officer** | Do high-cost cases have documented clinical justification? |
 | **Billing Manager** | Are there patterns in outlier charges? Billing errors? |
 | **Clinical Director** | Do treatment protocols correlate with outcomes and costs? |
+| **Health Policy Researcher** | What are typical costs for different diagnoses in China? |
 
 ---
 
@@ -365,6 +375,7 @@ See LICENSE file for details.
 ## 🙏 Acknowledgments
 
 - Dataset sourced from hospital records (April 2015 - February 2016)
+- Guizhou Province, China healthcare facility
 - Analysis performed using Python's pandas ecosystem
 - Visualization created with Matplotlib
 
@@ -372,4 +383,4 @@ See LICENSE file for details.
 
 **Project Status**: ✅ Complete Analysis | 📅 Last Updated: August 2026
 
-**Tags**: #HealthcareAnalytics #DataScience #Python #Pandas #CostAnalysis #Jupyter #EDA
+**Tags**: #HealthcareAnalytics #ChinaHealthcare #DataScience #Python #Pandas #CostAnalysis #Jupyter #EDA #GuizhouProvince
